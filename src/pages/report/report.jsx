@@ -1,6 +1,6 @@
 import "./report.css";
-import { FontAwesomeIcon,faCheckDouble } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck,faCheckDouble } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../data-context";
 export const Report = () => {
