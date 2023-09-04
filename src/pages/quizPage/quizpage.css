@@ -1,0 +1,32 @@
+
+
+.quiz-container{
+    display: flex;
+}
+.details-holder{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 5px;
+    background-color: rgb(238, 131, 131);
+    margin-bottom: 20px;
+}
+.quiz-ques-holder{
+    width: 70%;
+    text-align: left;
+    margin-left: 20px;
+}
+.navigation-panel{
+    width: 30%;
+}
+.options{
+    max-width: 70%;
+    display: flex;
+    line-height: 40px;
+    justify-content: space-between;
+    
+}
+.buttons-control{
+    align-self:self-end;
+    display: flex;
+    justify-content: space-between;
+}

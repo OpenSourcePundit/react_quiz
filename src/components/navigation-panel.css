@@ -1,0 +1,31 @@
+.questions-panel{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.outline{
+    background-color: aqua;
+    margin: 1rem ;
+    padding: 1rem;
+    border-radius:100% ;
+    cursor: pointer;
+}
+.red{
+    background-color: crimson;
+}
+.green{
+    background-color: greenyellow;
+}
+
+.outer{
+    display: flex;
+    margin: 1rem;
+}
+.outer h4{
+    width:5px;
+    height: 5px;
+}
+.border{
+    border:.1px solid black
+}
+
