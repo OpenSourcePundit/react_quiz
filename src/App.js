@@ -6,7 +6,7 @@ import { QuizPage } from "./pages/quizPage/quizpage";
 function App() {
   return (
     <div className="App">
-      //routes
+      {/* routes */}
       <Routes>
       <Route path="/" element={ <LandingPage/>}  />
       <Route path ="/quiz" element={<QuizPage/>} />
