@@ -1,10 +1,10 @@
-#Quiz App Details:
+# React Quiz App Details:
 This app uses React hooks to fetch data from server and create a quiz with timer for 15 minutes.
 Have used single State to file up all questions along with user responses in order to deal with single state and operate on data.
 Styling done using basic CSS.
 App generates a report displaying our performance at last on reports page.
 
-# Getting Started with Create React App
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
