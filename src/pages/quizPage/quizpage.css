@@ -1,32 +1,72 @@
 
-
-.quiz-container{
-    display: flex;
-}
 .details-holder{
     display: flex;
     justify-content: space-between;
-    padding: 5px 5px;
-    background-color: rgb(238, 131, 131);
-    margin-bottom: 20px;
+    background-color: rgb(255, 201, 201);
+}
+
+.quiz-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.left{
+    display: block;
+    align-items: center;
+    width: 100%;
+    border-right: 1px dotted black;
 }
 .quiz-ques-holder{
-    width: 70%;
+    width: 100%;
     text-align: left;
-    margin-left: 20px;
+    height: 24rem;
+    margin: 1rem;
 }
-.navigation-panel{
-    width: 30%;
+
+.question-number{
+    border-bottom: 2px solid black;
+    padding: 0.1rem;
 }
+
+.radio-input{
+    cursor: pointer;
+}
+
 .options{
-    max-width: 70%;
+    /* max-width: 80%; */
     display: flex;
     line-height: 40px;
     justify-content: space-between;
     
 }
 .buttons-control{
-    align-self:self-end;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
+
+.control-btn{
+    background-color: rgb(255, 201, 201);
+    box-shadow: 1px 1px 3px black;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.control-btn:hover{
+    box-shadow: 1px 2px 6px black;
+}
+
+.details-btn{
+    box-shadow: 1px 1px 3px black;
+    background-color: greenyellow;
+}
+
+@media only screen and (max-width: 570px) {
+   
+.control-btn{
+    width: 5rem;
+}
+
+.quiz-ques-holder{
+    height: 26rem;
+}
+  }

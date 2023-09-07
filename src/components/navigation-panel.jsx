@@ -20,10 +20,8 @@ export const NavigationPanel = () => {
 
   return (
     <div className="navigation-panel">
-      <h3 className="heading">Questions:</h3>
-
+      <p className="heading">Questions:</p>
       <div className="questions-panel">
-        {console.log(questions)}
         {questions?.map((question, index) => {
           return (
             <div className="outer">
@@ -58,8 +56,8 @@ export const NavigationPanel = () => {
                      
                       : "outline")
                 }
-              ></div>
-              <h4>{index + 1}</h4>
+              > <span className="question-no">{index + 1}</span></div>
+             
             </div>
           );
         })}

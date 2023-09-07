@@ -1,5 +1,5 @@
- import "./quizpage.css"
-import React, {useState} from "react"
+import "./quizpage.css"
+import React, {useState,useEffect} from "react"
 import { useNavigate } from "react-router-dom"
 import { useData } from "../../data-context";
 import { NavigationPanel } from "../../components/navigation-panel";
@@ -8,7 +8,7 @@ import { NavigationPanel } from "../../components/navigation-panel";
 
 export const QuizPage = () =>{
   const navigate = useNavigate();
-  const {questions,setQuestions,useremail,currentQuestion,setCurrentQuestion,selectedOption,setSelectedOption} = useData();
+  const {questions,setQuestions,useremail,currentQuestion,setCurrentQuestion,selectedOption,setSelectedOption,time,startTimer} = useData();
   console.log(questions)
   
   console.log(selectedOption)
@@ -74,34 +74,39 @@ export const QuizPage = () =>{
 
     return(
         <div className="main-quiz-container">
-            <h2 className="header"><span className="my-quiz-logo">MY</span>- <span className="quiz-logo">QUIZ</span></h2>
+            <h2 className="header">MYQUIZ</h2>
             <div className="details-holder">
-                <h3 className="timer">Time Left:  03:36 <i class="bi bi-terminal-plus"></i></h3>
-               <h3 className="user-name-holder">Email:{useremail}</h3>
-               {currentQuestion!==14 &&  <button onClick={()=>saveAndSubmit()}>Save and Submit </button>}
+                {/* time left should change!? */}
+                <h3 className="timer">Time Left:  {time.min<10?'0'+time.min:time.min}:{time.sec<10?'0'+time.sec:time.sec} <i class="bi bi-terminal-plus"></i></h3>
+               <h3 className="user-name-holder">Email : {useremail}</h3>
+               {currentQuestion!==14 &&  <button className="details-btn" onClick={()=>saveAndSubmit()}>Save and Submit </button>}
             </div>
             <div className="quiz-container">
-                <div className="quiz-ques-holder">
-                    <h3 className="question-number">Question {questions[currentQuestion]?._id}.</h3>
-                    <h3 className="question-statement">{questions[currentQuestion]?.question}</h3>
-                    {questions[currentQuestion]?.options.map((option,index)=>{ 
-                        return(<>
+                <div className="left">
+                    <div className="quiz-ques-holder">
+                        <h3 className="question-number">Question {questions[currentQuestion]?._id}.</h3>
+                        <h3 className="question-statement">{questions[currentQuestion]?.question}</h3>
+                        {questions[currentQuestion]?.options.map((option,index)=>{ 
+                            return(<>
+                                
+                                <h3 className="options">{String.fromCharCode(65+index)}.{option}   <input type="radio" className="radio-input" name="xyz" id="options" checked={getCheckedOption(option)}  value={option} onChange={(e)=>setSelectedOption(e.target.value)} /> </h3>
                             
-                            <h3 className="options">{String.fromCharCode(65+index)}.{option}   <input type="radio" name="xyz" id="options" checked={getCheckedOption(option)}  value={option} onChange={(e)=>setSelectedOption(e.target.value)} /> </h3>
-                           
-                            </>
-                        )
-                    })}
+                                </>
+                            )
+                        })}
 
-                    <div className="buttons-control">
-                        <button onClick={()=>{if(currentQuestion!==0){markVisited(currentQuestion);setCurrentQuestion(currentQuestion-1)}}}>Previous</button>
-                        <button onClick={()=>clearSelectionFunction()}>Clear Selection</button>
-                        {currentQuestion===14 ? <button onClick={()=>saveAndSubmit()}>Save and Submit </button> :<button onClick={()=>saveAndNextFunction()}>Save and Next </button>}
-                        
-                        
+                    
+
                     </div>
-
+                    <div className="buttons-control">
+                            <button className="control-btn" onClick={()=>{if(currentQuestion!==0){markVisited(currentQuestion);setCurrentQuestion(currentQuestion-1)}}}>Previous</button>
+                            <button className="control-btn" onClick={()=>clearSelectionFunction()}>Clear Selection</button>
+                            {currentQuestion===14 ? <button onClick={()=>saveAndSubmit()} className="details-btn">Save and Submit </button> :<button className="control-btn" onClick={()=>saveAndNextFunction()}>Save and Next </button>}
+                            
+                            
+                        </div>
                 </div>
+               
                 <NavigationPanel/>
             </div>
         </div>

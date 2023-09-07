@@ -1,11 +1,17 @@
 import "./report.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faCheckDouble } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+
 import { useData } from "../../data-context";
+// import { NativeModules } from "react-native";
+// import RNRestart from 'react-native-restart'; 
+
+
+
+import { useState } from "react";
 export const Report = () => {
-  const navigate = useNavigate();
-  const { questions, useremail } = useData();
+  
+  const { questions, useremail,Reset} = useData();
   console.log(questions);
   const score = questions.reduce((total, ques) => {
     if (ques.correct_answer === ques.userOption) {
@@ -24,15 +30,24 @@ export const Report = () => {
       <div className="details-holder">
         <h3 className="timer">Obtained Score: {score}/15 </h3>
         <h3 className="user-name-holder">Email:{useremail}</h3>
-        <button
+        <button className="details-btn"
           onClick={() => {
-            navigate("/");
+           
+            Reset();
+            // NativeModules.DevSettings.reload();
+            // RNRestart.Restart();
+            
           }}
         >
           Start New Quiz{" "}
         </button>
       </div>
       <div className="report-container">
+        <div className="report-holder-top">
+        Correct Option: <FontAwesomeIcon className="correct-option" icon={faCheck} ></FontAwesomeIcon>
+        <br/>
+        Your Answer: <FontAwesomeIcon className="user-option" icon={faCheckDouble}></FontAwesomeIcon>
+        </div>
         <div className="report-holder">
           {questions.map((ques, index) => {
             return (
@@ -43,12 +58,12 @@ export const Report = () => {
                 <div>
                   {ques.options.map((option, index) => {
                     return (
-                      <div className="option">
+                      <div className = "option">
                         {String.fromCharCode(65 + index)}.{option}
                         {option === ques.correct_answer && (
-                          <FontAwesomeIcon icon={faCheck} />
+                          <FontAwesomeIcon className="correct-option" icon={faCheck} ></FontAwesomeIcon>
                         )}
-                        {option === ques.userOption && <FontAwesomeIcon icon={faCheckDouble} /> }
+                        {option === ques.userOption && <FontAwesomeIcon className="user-option" icon={faCheckDouble}></FontAwesomeIcon>  }
                       </div>
                     );
                   })}
