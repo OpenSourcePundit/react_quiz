@@ -10,27 +10,22 @@ export const DataProvider = ({children}) =>{
 
     const navigate = useNavigate();
 
-    const [questions,setQuestions] =useState([]);
-    const [currentQuestion,setCurrentQuestion] = useState(0);
-    const [useremail,setUseremail] = useState("");
-    const [selectedOption,setSelectedOption] = useState(-1);
-    const [time,setTime] = useState({min:14,sec:59})
-    
-    var updateMin = time.min,updateSec=time.sec;
+    const [questions,setQuestions] =useState([]); //contains all questions
+    const [currentQuestion,setCurrentQuestion] = useState(0); // holds current question index
+    const [useremail,setUseremail] = useState(""); // holds user information
+    const [selectedOption,setSelectedOption] = useState(-1); // holds user selected option
+    const [time,setTime] = useState({min:14,sec:59}) //timer
+    var updateMin = time.min,updateSec=time.sec; // to update time
     var refresh;
 
     const startTimer = () =>{
-        console.log("Start timer")
-
         run();
-        
-
         refresh =  setInterval(run,1000)
     }
 
 
 
-    const run =() =>{
+    const run =() =>{  //callback to run timer
         
         console.log("Running")
         if(updateMin ===0 && updateSec===0){
@@ -51,6 +46,7 @@ export const DataProvider = ({children}) =>{
     
 
     const getData = () =>{
+        //fetching data from server
        fetch("https://opentdb.com/api.php?amount=15")
     .then(res=>res.json())
     .then(data =>  setQuestions(data.results.map((ques,index)=>{
@@ -63,6 +59,7 @@ export const DataProvider = ({children}) =>{
     }
 
     useEffect(()=>getData(),[])
+    //reset function
 
     const Reset = () =>{
         setQuestions([]);

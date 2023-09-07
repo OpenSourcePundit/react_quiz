@@ -27,37 +27,27 @@ export const NavigationPanel = () => {
             <div className="outer">
               <div
                 onClick={() => {
-                    markVisited(index);
+                  markVisited(index);
                   setCurrentQuestion(index);
-
-                  
                 }}
                 className={
+                  //class to show correct color for attempted and visited and yet to visit questions
                   currentQuestion === index
-                    
-                  
-                  ? (question.visited
+                    ? question.visited
                       ? question.attempted
                         ? "outline green border"
                         : "outline red border"
-                      : "outline border")
-                    
-                    
-                    
-                    
-                    
-                    
-                      :
-                    
-                    ( question.visited
-                    ?( question.attempted
+                      : "outline border"
+                    : question.visited
+                    ? question.attempted
                       ? "outline green"
-                      : "outline red")
-                     
-                      : "outline")
+                      : "outline red"
+                    : "outline"
                 }
-              > <span className="question-no">{index + 1}</span></div>
-             
+              >
+                {" "}
+                <span className="question-no">{index + 1}</span>
+              </div>
             </div>
           );
         })}
